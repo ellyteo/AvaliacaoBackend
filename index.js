@@ -5,14 +5,14 @@ const app = express()
 
 ///////////////////////// CREATE
 app.get("/api/v1/cachorro", (req, res) => {
-    const { id, name } = req.query
+    const { id, name, raca } = req.query
     
-    if(!id || !name){
+    if(!id || !name || !raca ){
         res.send({ message: "Digite um Id e nome existente"})
         return
     }
     
-    bancoDeDados.push({ id, name })
+    bancoDeDados.push({ id, name, raca })
     console.log(bancoDeDados)
     
     res.send({ message: "Cachorro adicionado criado com sucesso"})
