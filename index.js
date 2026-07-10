@@ -51,6 +51,20 @@ app.get("/api/v1/deletar/:id", (req, res) => {
     res.send({ message: "Cachorro deletado com sucesso" })
 })
 
+//////////////////////// ALTERAR
+app.get("/api/alterar/:id", (req, res) => {
+    const id = req.params.id
+    const { name } = req.query
+    const cachorro = bancoDeDados.find(it => it.id == id)
+    if(!cachorro) {
+        res.send({ message: "Favor informar id" })
+        return 
+    }
+    cachorro.name = name
+    res.send({ message: "Pessoa alterada com sucesso" })
+})
+
+
 app.listen(3000, () => {
 
     console.log("Ouvindo na porta 3000")
